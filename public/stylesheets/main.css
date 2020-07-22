@@ -1,0 +1,6 @@
+li.open {
+ list-style-image: url('/assets/images/bullet_open.png');
+}
+li.closed {
+ list-style-image: url('/assets/images/bullet_closed.png');
+}

@@ -1,0 +1,25 @@
+@import xlsx2node.Node
+
+@(nodes: List[Node])
+
+@main("Hello") {
+  <div class="wrapper">
+    <ul>
+      @nodes.map { node =>
+        @displayNode(node)
+      }
+    </ul>
+  </div>
+  <script src='@routes.Assets.versioned("javascripts/index.js")' type="text/javascript"></script>
+}
+
+@displayNode(node: Node) = {
+  <li>Id: @node.Id, name: @node.name</li>
+  @if(node.children.nonEmpty) {
+    <ul>
+      @node.children.map { child =>
+        @displayNode(child)
+      }
+    </ul>
+  }
+}
