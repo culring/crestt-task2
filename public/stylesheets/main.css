@@ -1,10 +1,10 @@
-li:not(.empty)>span.node_description:hover,span.bullet:hover {
+li:not(.no_children)>span.node_description:hover,span.bullet:hover {
  cursor: pointer;
 }
 li {
  list-style-type: none;
 }
-span.bullet,span.bullet_spacing {
+span.bullet {
  display: inline-block;
  width: 18px;
  max-width: 18px;

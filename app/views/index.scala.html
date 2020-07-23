@@ -14,18 +14,18 @@
   <script src='@routes.Assets.versioned("javascripts/index.js")' type="text/javascript"></script>
 }
 
-@renderListElement(node: Node)(content: Html) = {
+@renderListItem(node: Node)(content: Html) = {
   @if(node.children.isEmpty) {
-    <li class="empty">
-      <span class="bullet_spacing">
+    <li class="no_children">
+      <span class="bullet">
         <img src='@routes.Assets.versioned("images/bullet_disabled.png")'>
       </span>
       @content
     </li>
   } else {
-    <li class="closed">
+    <li class="children_hide">
       <span class="bullet">
-        <img src='@routes.Assets.versioned("images/bullet_closed.png")'>
+        <img src='@routes.Assets.versioned("images/bullet_closed.png")' alt="">
       </span>
       @content
     </li>
@@ -33,7 +33,7 @@
 }
 
 @renderNode(node: Node) = {
-  @renderListElement(node) {
+  @renderListItem(node) {
     <span class="node_description">(Id: @node.Id, name: @node.name)</span>
     @if(node.children.nonEmpty) {
       <ul style="display:none">
