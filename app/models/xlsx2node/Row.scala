@@ -1,3 +1,3 @@
 package models.xlsx2node
 
-case class Row(Id: Int, level: Int, name: String)
+private[xlsx2node] case class Row(Id: Int, level: Int, name: String)
