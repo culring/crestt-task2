@@ -20,7 +20,7 @@
     </li>
   } else {
     <li class="closed">
-      <span>
+      <span class="bullet">
         <img src='@routes.Assets.versioned("images/bullet_closed.png")'>
       </span>
       @content
@@ -30,7 +30,7 @@
 
 @renderNode(node: Node) = {
   @renderListElement(node) {
-    Id: @node.Id, name: @node.name
+    <span class="node_description">Id: @node.Id, name: @node.name</span>
     @if(node.children.nonEmpty) {
       <ul style="display:none">
         @node.children.map { child =>
