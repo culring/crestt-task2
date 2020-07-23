@@ -4,6 +4,7 @@
 
 @main("Node Viewer") {
   <div class="wrapper">
+    <h1 class="title">Node Viewer</h1>
     <ul>
       @nodes.map { node =>
         @renderNode(node)
@@ -16,6 +17,9 @@
 @renderListElement(node: Node)(content: Html) = {
   @if(node.children.isEmpty) {
     <li class="empty">
+      <span class="bullet_spacing">
+        <img src='@routes.Assets.versioned("images/bullet_disabled.png")'>
+      </span>
       @content
     </li>
   } else {
@@ -30,7 +34,7 @@
 
 @renderNode(node: Node) = {
   @renderListElement(node) {
-    <span class="node_description">Id: @node.Id, name: @node.name</span>
+    <span class="node_description">(Id: @node.Id, name: @node.name)</span>
     @if(node.children.nonEmpty) {
       <ul style="display:none">
         @node.children.map { child =>

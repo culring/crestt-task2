@@ -9,19 +9,19 @@ function addEventsForTogglingListItems() {
         const parentListItem = this.parentElement;
         const childrenListSelector = $("ul", parentListItem).first();
         if(childrenListSelector.length > 0) {
-            if($(parentListItem).hasClass("opened")) {
-                $(parentListItem).removeClass("opened");
+            if($(parentListItem).hasClass("open")) {
+                $(parentListItem).removeClass("open");
                 $(parentListItem).addClass("closed");
             }
             else {
                 $(parentListItem).removeClass("closed");
-                $(parentListItem).addClass("opened");
+                $(parentListItem).addClass("open");
             }
             childrenListSelector.slideToggle();
         }
 
         updateBulletForListItem(parentListItem,
-            "/assets/images/bullet_opened_hovered.png",
+            "/assets/images/bullet_open_hovered.png",
             "/assets/images/bullet_closed_hovered.png");
 
         event.stopPropagation();
@@ -35,7 +35,7 @@ function addEventsForHoveringOverListItems() {
         const nodeDescriptionSelector = $("span.node_description", parentListItem).first();
         nodeDescriptionSelector.css("font-weight", "bold");
         updateBulletForListItem(parentListItem,
-            "/assets/images/bullet_opened_hovered.png",
+            "/assets/images/bullet_open_hovered.png",
             "/assets/images/bullet_closed_hovered.png")
         event.stopPropagation();
     }, function(event) {
@@ -43,18 +43,18 @@ function addEventsForHoveringOverListItems() {
         const nodeDescriptionSelector = $("span.node_description", parentListItem).first();
         nodeDescriptionSelector.css("font-weight", "normal");
         updateBulletForListItem(parentListItem,
-            "/assets/images/bullet_opened.png",
+            "/assets/images/bullet_open.png",
             "/assets/images/bullet_closed.png");
         event.stopPropagation();
     });
 }
 
-function updateBulletForListItem(listItem, openedImgSrc, closedImgSrc) {
+function updateBulletForListItem(listItem, openImgSrc, closedImgSrc) {
     const spanSelector = $("span.bullet", listItem).first();
     const span = spanSelector.get(0);
     const img = document.createElement('img');
-    if($(listItem).hasClass("opened")) {
-        img.src = openedImgSrc;
+    if($(listItem).hasClass("open")) {
+        img.src = openImgSrc;
     }
     else if($(listItem).hasClass("closed")) {
         img.src = closedImgSrc;
