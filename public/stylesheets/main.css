@@ -1,6 +1,20 @@
-li.open {
- list-style-image: url('/assets/images/bullet_open.png');
+/*li.opened {*/
+/* list-style-image: url('/assets/images/bullet_opened.png');*/
+/*}*/
+/*li.opened:hover {*/
+/* list-style-image: url('/assets/images/bullet_opened_hovered.png');*/
+/*}*/
+/*li.closed {*/
+/* list-style-image: url('/assets/images/bullet_closed.png');*/
+/*}*/
+/*li.closed:hover {*/
+/* list-style-image: url('/assets/images/bullet_closed_hovered.png');*/
+/*}*/
+
+li {
+ list-style-type: none;
 }
-li.closed {
- list-style-image: url('/assets/images/bullet_closed.png');
+
+li:not(.empty) {
+ cursor: pointer;
 }

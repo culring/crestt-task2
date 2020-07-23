@@ -2,24 +2,41 @@
 
 @(nodes: List[Node])
 
-@main("Hello") {
+@main("Node Viewer") {
   <div class="wrapper">
     <ul>
       @nodes.map { node =>
-        @displayNode(node)
+        @renderNode(node)
       }
     </ul>
   </div>
   <script src='@routes.Assets.versioned("javascripts/index.js")' type="text/javascript"></script>
 }
 
-@displayNode(node: Node) = {
-  <li>Id: @node.Id, name: @node.name</li>
-  @if(node.children.nonEmpty) {
-    <ul>
-      @node.children.map { child =>
-        @displayNode(child)
-      }
-    </ul>
+@renderListElement(node: Node)(content: Html) = {
+  @if(node.children.isEmpty) {
+    <li class="empty">
+      @content
+    </li>
+  } else {
+    <li class="closed">
+      <span>
+        <img src='@routes.Assets.versioned("images/bullet_closed.png")'>
+      </span>
+      @content
+    </li>
+  }
+}
+
+@renderNode(node: Node) = {
+  @renderListElement(node) {
+    Id: @node.Id, name: @node.name
+    @if(node.children.nonEmpty) {
+      <ul style="display:none">
+        @node.children.map { child =>
+          @renderNode(child)
+        }
+      </ul>
+    }
   }
 }
