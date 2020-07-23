@@ -1,0 +1,1 @@
+Launch the application server by running `sbt run` command.
